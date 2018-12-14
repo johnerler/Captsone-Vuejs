@@ -4,6 +4,7 @@
     <h1>Total Expenses: {{ user_group.total_expenses }}</h1>
     <h1>Shared Expenses: {{ user_group.shared_expenses }}</h1>
     <!-- <button @click="deleteAll(expense.id);">Reset</button> -->
+    
 
      <div class='container mb40 pt30'>
     <div class='row'>
