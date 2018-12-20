@@ -18,7 +18,7 @@
           <label>Password confirmation:</label>
           <input type="password" class="form-control" v-model="passwordConfirmation" />
         </div>
-        <input type="submit" class="btn btn-primary" value="Submit" />
+        <input type="submit" class="btn btn-success mb5 btn-rounded" value="Submit" />
       </form>
     </div>
   </div>

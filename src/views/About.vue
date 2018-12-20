@@ -1,22 +1,46 @@
 <template>
   <div class="home">
     <!-- <h1>{{ message }}</h1> -->
+    <!-- <h2>User Group: {{ user_group.name }} </h2>
     <h1>Total Expenses: {{ user_group.total_expenses }}</h1>
-    <h1>Shared Expenses: {{ user_group.shared_expenses }}</h1>
+    <h1>Shared Expenses: {{ user_group.shared_expenses }}</h1> -->
     <!-- <button @click="deleteAll(expense.id);">Reset</button> -->
+     <div class="page-titles title-dark pt30 pb20 mb70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 ><span>User Group: {{ user_group.name }}</span></h4>
+                        <h4 ><span>Total Expenses: {{ user_group.total_expenses | currency }}</span></h4>
+                        <h4 ><span>Shared Expenses: {{ user_group.shared_expenses | currency }}</span></h4>
+
+                    </div>
+                    <div class=" col-md-6 mb0">
+                        <ol class="breadcrumb text-md-right">
+                            <li class="breadcrumb-item"><a href="index.html">Make Entry</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <h2>Search Expenses:</h2>
+    <input type="text" v-model="searchFilter" class="form-control" placeholder="Type description...">
+
     
 
      <div class='container mb40 pt30'>
     <div class='row'>
      <div v-for="(expenses, category) in user_group.expenses_by_category">
+
       <h2 class="mt-0 mb10 text-uppercase">{{ category }}</h2>
 
-      <div v-for="expense in expenses">
+      <div v-for="expense in filterBy(expenses, searchFilter, 'description')">
+      <!-- <div v-for="expense in expenses"> -->
         <div class="col-lg-12 mb40">
 
         <p><i class="icon-hover-1 bg-default ti-settings icon-hover-default"></i>
-          {{ expense.description }} - {{ expense.amount }} - {{ expense.date }} -
-          <button @click="deleteExpense(expense, expense.id);">Remove</button>
+          {{ expense.description }} - <strong>{{ expense.amount | currency }}</strong> - {{ expense.date }} -
+          <button class="btn btn-outline-success mb5 btn-rounded" @click="deleteExpense(expense, expense.id);">Remove</button>
         </p>
       </div>
       </div>
@@ -125,16 +149,20 @@
   </div>
 </template>
 
-<style></style>
+<style>
+</style>
 
 <script>
 var axios = require("axios");
+import Vue2Filters from "vue2-filters";
 
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function() {
     return {
       message: "Total Expenses",
-      user_group: {}
+      user_group: {},
+      searchFilter: ""
     };
   },
   created: function() {

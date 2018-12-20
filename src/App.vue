@@ -76,12 +76,17 @@
             <div  id="navbarNavDropdown" class="navbar-collapse collapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown active">
-                        <a class="nav-link" aria-haspopup="true" aria-expanded="false" href="/#/">Home</a>
+                        <a class="nav-link" aria-haspopup="true" aria-expanded="false" href="/#/">Make Entry</a>
                     </li>
                     
                     <li class="nav-item dropdown dropdown-full-width">
                         <a class="nav-link" href="/#/expense" aria-haspopup="true" aria-expanded="false">
                             Expenses  
+                        </a>
+                    </li>
+                      <li class="nav-item dropdown dropdown-full-width">
+                        <a class="nav-link" href="/#/Users" aria-haspopup="true" aria-expanded="false">
+                            Users  
                         </a>
                     </li>
                     <li class="nav-item dropdown dropdown-full-width">

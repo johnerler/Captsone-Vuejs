@@ -6,11 +6,11 @@
         <ul>
           <li class="text-danger" v-for="error in errors">{{ error }}</li>
         </ul>
-        <div class="form-group"><label>Email:</label> <input type="email" class="form-control" v-model="email" /></div>
+        <div class="form-group"><label><h5>Email:</h5></label> <input type="email" class="form-control" v-model="email" placeholder="Enter email..." /></div>
         <div class="form-group">
-          <label>Password:</label> <input type="password" class="form-control" v-model="password" />
+          <label><h5>Password:</h5></label> <input type="password" class="form-control" v-model="password" placeholder="Enter password..." />
         </div>
-        <input type="submit" class="btn btn-primary" value="Submit" />
+        <input type="submit" class="btn btn-success mb5 btn-rounded" value="Submit" />
       </form>
     </div>
   </div>
@@ -39,7 +39,7 @@ export default {
         .then(response => {
           axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
-          this.$router.push("/");
+          this.$router.push("/Users");
         })
         .catch(error => {
           this.errors = ["Invalid email or password."];
